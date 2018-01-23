@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.reverside.auth.model.Role;
+import com.reverside.auth.model.Timesheet;
 import com.reverside.auth.model.Employee;
 import com.reverside.auth.repository.UserRepository;
 
@@ -27,8 +27,8 @@ public class UserDetailsServiceImpl<UserEmail> implements UserDetailsService{
         Employee employee = userRepository.findByUsername(username);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for (Role role : employee.getRoles()){
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
+        for (Timesheet timesheet : employee.getRoles()){
+            grantedAuthorities.add(new SimpleGrantedAuthority(timesheet.getName()));
         }
 
         return new org.springframework.security.core.userdetails.User(employee.getUsername(), employee.getPassword(), grantedAuthorities);
@@ -40,8 +40,8 @@ public class UserDetailsServiceImpl<UserEmail> implements UserDetailsService{
         Employee employee = userRepository.findByUsername(email);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for (Role role : employee.getRoles()){
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
+        for (Timesheet timesheet : employee.getRoles()){
+            grantedAuthorities.add(new SimpleGrantedAuthority(timesheet.getName()));
         }
 
         return (UserEmail) new org.springframework.security.core.userdetails.User(employee.getUsername(), employee.getPassword(), grantedAuthorities);

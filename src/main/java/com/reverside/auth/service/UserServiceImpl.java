@@ -5,6 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.reverside.auth.model.Employee;
+import com.reverside.auth.model.Timesheet;
 import com.reverside.auth.repository.RoleRepository;
 import com.reverside.auth.repository.UserRepository;
 
@@ -30,5 +31,17 @@ public class UserServiceImpl implements UserService {
     public Employee findByUsername(String username, String email) {
         return userRepository.findByUsername(username);
     }
+
+	@Override
+	public void save(Timesheet timesheet) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Timesheet empNumber(int empNumber, String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 }

@@ -11,7 +11,7 @@ public class Employee {
 	private String username;
     private String password;
     private String passwordConfirm;
-    private Set<Role> roles;
+    private Set<Timesheet> timesheets;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -58,11 +58,11 @@ public class Employee {
 
     @ManyToMany
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    public Set<Role> getRoles() {
-        return roles;
+    public Set<Timesheet> getRoles() {
+        return timesheets;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRoles(Set<Timesheet> timesheets) {
+        this.timesheets = timesheets;
     }
 }

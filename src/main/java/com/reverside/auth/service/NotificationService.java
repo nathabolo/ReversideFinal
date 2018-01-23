@@ -1,5 +1,6 @@
 package com.reverside.auth.service;
 
+import javax.servlet.annotation.WebServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.reverside.auth.model.Employee;
 
 @Service
+@WebServlet("/TimesheetServlet")
 public class NotificationService {
 	
 	private JavaMailSender javaMailSender;
@@ -24,9 +26,17 @@ public class NotificationService {
 		mail.setTo(employee.getEmail());
 		mail.setFrom("nathabolo@gmail.com");
 		mail.setSubject("Employee Timesheet");
-		mail.setText("Please checkout for an Employee Timesheet");
+		mail.setText("Please checkout an employee timesheet");
+		mail.copyTo(mail);
+	
+		
 		
 		javaMailSender.send(mail);
+	}
+	
+	public NotificationService() {
+		super();
+		System.out.println("Email servlet is initiated....");
 	}
 
 }

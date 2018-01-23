@@ -1,4 +1,5 @@
 # Time sheet and leave form Example with Spring Security, Spring Boot, Spring Data JPA, HSQL, JSP/Angular 4
+Author: Nathaniel Mamabolo
 
 ## Guide
 www.reverside.co.za
